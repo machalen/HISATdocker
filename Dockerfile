@@ -15,8 +15,6 @@ RUN apt-get update && apt-get -y install libtbb-dev
 #Download HISAT and Bowtie2 in /bin
 WORKDIR /bin
 RUN wget ftp://ftp.ccb.jhu.edu/pub/infphilo/hisat2/downloads/hisat2-2.1.0-Linux_x86_64.zip
-RUN wget --default-page=bowtie2-2.3.2-linux-x86_64.zip http://sourceforge.net/projects/bowtie-bio/files/bowtie2/2.3.2/bowtie2-2.3.2-linux-x86_64.zip/
 
 #Unzip HISAT and Bowtie2
 RUN unzip hisat2-2.1.0-Linux_x86_64.zip
-RUN unzip bowtie2-2.3.2-linux-x86_64.zip 

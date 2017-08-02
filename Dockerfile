@@ -29,7 +29,7 @@ RUN ./configure
 RUN make
 RUN rm /bin/samtools-1.5.tar.bz2
 
-#Add TopHat and samtools to the path variable
+#Add Hisat and samtools to the path variable
 ENV PATH $PATH:/bin/hisat2-2.1.0
 ENV PATH $PATH:/bin/samtools-1.5
 

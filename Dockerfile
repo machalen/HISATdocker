@@ -10,7 +10,9 @@ FROM ubuntu:14.04
 MAINTAINER Magdalena Arnal <marnal@imim.es>
 
 #Install required libraries in ubuntu
-RUN apt-get update && apt-get install --yes wget unzip python
+RUN apt-get update -y && apt-get install -y \
+    wget git unzip bzip2 g++ make zlib1g-dev ncurses-dev python default-jdk default-jre libncurses5-dev \
+    libbz2-dev liblzma-dev
 #Set wokingDir in /bin
 WORKDIR /bin
 
@@ -23,8 +25,8 @@ RUN rm hisat2-2.1.0-Linux_x86_64.zip
 
 #Install and Configure samtools
 RUN wget http://github.com/samtools/samtools/releases/download/1.5/samtools-1.5.tar.bz2
-RUN tar jxf samtools-1.5.tar.bz2
-RUN cd samtools-1.5
+RUN tar --bzip2 -xf samtools-1.5.tar.bz2
+WORKDIR /bin/samtools-1.5
 RUN ./configure
 RUN make
 RUN rm /bin/samtools-1.5.tar.bz2
@@ -33,8 +35,6 @@ RUN rm /bin/samtools-1.5.tar.bz2
 ENV PATH $PATH:/bin/hisat2-2.1.0
 ENV PATH $PATH:/bin/samtools-1.5
 
-#Remove no installed packages wget and unzip
-RUN apt-get purge --yes wget unzip
-
 #Set the default Working Directory
+USER 1001:1001
 WORKDIR /

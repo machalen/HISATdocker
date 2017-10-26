@@ -36,5 +36,5 @@ ENV PATH $PATH:/bin/hisat2-2.1.0
 ENV PATH $PATH:/bin/samtools-1.5
 
 #Set the default Working Directory
-USER 1001:1001
+#USER 1001:1001
 WORKDIR /
